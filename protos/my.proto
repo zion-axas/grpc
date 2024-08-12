@@ -2,8 +2,14 @@ syntax = "proto3";
 
 package mypackage;
 
+message SubData {
+    int32 id = 1;
+}
+
 message Req {
     int32 counter = 1;
+    repeated string products = 2;  // list[str]
+    SubData subdata = 3;  // object SubData
 }
 
 message Res {
@@ -12,4 +18,6 @@ message Res {
 
 service MySrv {
     rpc Send (Req) returns (Res) {} // method
+    rpc SendStream (Req) returns (stream Res) {} // method returns iterator
 }
+
