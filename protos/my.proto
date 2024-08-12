@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package mypackage;
+
+message Req {
+    int32 counter = 1;
+}
+
+message Res {
+    string answer = 1;
+}
+
+service MySrv {
+    rpc Send (Req) returns (Res) {} // method
+}
