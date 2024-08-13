@@ -35,7 +35,10 @@ def run_bidirect():
     with grpc.insecure_channel("localhost:50051") as channel:
         stub = my_pb2_grpc.MySrvStub(channel)
 
-        for response in stub.GetStream((my_pb2.Req(counter=i) for i in (1, 2, 3))):
+        stream_iterator = (my_pb2.Req(counter=i) for i in (1, 2, 3))
+
+        response: my_pb2.Res
+        for response in stub.GetStream(stream_iterator):
             print("response:", response.answer)
 
 

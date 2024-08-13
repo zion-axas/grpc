@@ -26,23 +26,20 @@ class My(my_pb2_grpc.MySrv):
 
         print("request.counter:", request.counter, request.products, request.subdata)
 
-        return (my_pb2.Res(answer=i) for i in ["a", "b", "c"])
+        for i in ["a", "b", "c"]:
+            yield my_pb2.Res(answer=i)
 
-        return iter([my_pb2.Res(answer=i) for i in ["a", "b", "c"]])
-
-        def foo(r):
-            for i in r:
-                yield my_pb2.Res(answer=i)
-
-        return foo(["a", "b", "c"])
+        # return (my_pb2.Res(answer=i) for i in ["a", "b", "c"])
 
     def GetStream(self, stream_iterator, context):
-        "для получения потока принимает итератор"
+        "итератор для получения потока принимает итератор"
 
+        i: my_pb2.Req
         for i in stream_iterator:
-            print(i)
+            print(i.counter)
+            yield my_pb2.Res(answer=str(i.counter * 5))
 
-        return (my_pb2.Res(answer=i) for i in ["d", "e", "f"])
+        # return (my_pb2.Res(answer=i) for i in ["d", "e", "f"])
 
 
 def serve():
