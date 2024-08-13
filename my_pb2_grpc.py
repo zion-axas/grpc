@@ -49,6 +49,11 @@ class MySrvStub(object):
                 request_serializer=my__pb2.Req.SerializeToString,
                 response_deserializer=my__pb2.Res.FromString,
                 _registered_method=True)
+        self.GetStream = channel.stream_stream(
+                '/mypackage.MySrv/GetStream',
+                request_serializer=my__pb2.Req.SerializeToString,
+                response_deserializer=my__pb2.Res.FromString,
+                _registered_method=True)
 
 
 class MySrvServicer(object):
@@ -66,6 +71,12 @@ class MySrvServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetStream(self, request_iterator, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MySrvServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -76,6 +87,11 @@ def add_MySrvServicer_to_server(servicer, server):
             ),
             'SendStream': grpc.unary_stream_rpc_method_handler(
                     servicer.SendStream,
+                    request_deserializer=my__pb2.Req.FromString,
+                    response_serializer=my__pb2.Res.SerializeToString,
+            ),
+            'GetStream': grpc.stream_stream_rpc_method_handler(
+                    servicer.GetStream,
                     request_deserializer=my__pb2.Req.FromString,
                     response_serializer=my__pb2.Res.SerializeToString,
             ),
@@ -132,6 +148,33 @@ class MySrv(object):
             request,
             target,
             '/mypackage.MySrv/SendStream',
+            my__pb2.Req.SerializeToString,
+            my__pb2.Res.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetStream(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/mypackage.MySrv/GetStream',
             my__pb2.Req.SerializeToString,
             my__pb2.Res.FromString,
             options,

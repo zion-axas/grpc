@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x08my.proto\x12\tmypackage\"\x15\n\x07SubData\x12\n\n\x02id\x18\x01 \x01(\x05\"M\n\x03Req\x12\x0f\n\x07\x63ounter\x18\x01 \x01(\x05\x12\x10\n\x08products\x18\x02 \x03(\t\x12#\n\x07subdata\x18\x03 \x01(\x0b\x32\x12.mypackage.SubData\"\x15\n\x03Res\x12\x0e\n\x06\x61nswer\x18\x01 \x01(\t2c\n\x05MySrv\x12(\n\x04Send\x12\x0e.mypackage.Req\x1a\x0e.mypackage.Res\"\x00\x12\x30\n\nSendStream\x12\x0e.mypackage.Req\x1a\x0e.mypackage.Res\"\x00\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x08my.proto\x12\tmypackage\"\x15\n\x07SubData\x12\n\n\x02id\x18\x01 \x01(\x05\"M\n\x03Req\x12\x0f\n\x07\x63ounter\x18\x01 \x01(\x05\x12\x10\n\x08products\x18\x02 \x03(\t\x12#\n\x07subdata\x18\x03 \x01(\x0b\x32\x12.mypackage.SubData\"\x15\n\x03Res\x12\x0e\n\x06\x61nswer\x18\x01 \x01(\t2\x96\x01\n\x05MySrv\x12(\n\x04Send\x12\x0e.mypackage.Req\x1a\x0e.mypackage.Res\"\x00\x12\x30\n\nSendStream\x12\x0e.mypackage.Req\x1a\x0e.mypackage.Res\"\x00\x30\x01\x12\x31\n\tGetStream\x12\x0e.mypackage.Req\x1a\x0e.mypackage.Res\"\x00(\x01\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -27,6 +27,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REQ']._serialized_end=123
   _globals['_RES']._serialized_start=125
   _globals['_RES']._serialized_end=146
-  _globals['_MYSRV']._serialized_start=148
-  _globals['_MYSRV']._serialized_end=247
+  _globals['_MYSRV']._serialized_start=149
+  _globals['_MYSRV']._serialized_end=299
 # @@protoc_insertion_point(module_scope)

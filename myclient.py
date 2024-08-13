@@ -27,9 +27,19 @@ def run_stream():
         stub = my_pb2_grpc.MySrvStub(channel)
 
         response: my_pb2.Res  # iterator
-        for response in stub.SendStream(my_pb2.Req(counter=123, subdata={"id": 1})):
+        for response in stub.SendStream(my_pb2.Req(counter=456, subdata={"id": 2})):
+            print("response:", response.answer)
+
+
+def run_bidirect():
+    with grpc.insecure_channel("localhost:50051") as channel:
+        stub = my_pb2_grpc.MySrvStub(channel)
+
+        for response in stub.GetStream((my_pb2.Req(counter=i) for i in (1, 2, 3))):
             print("response:", response.answer)
 
 
 if __name__ == "__main__":
+    run()
     run_stream()
+    run_bidirect()

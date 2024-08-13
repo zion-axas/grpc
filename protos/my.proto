@@ -8,8 +8,8 @@ message SubData {
 
 message Req {
     int32 counter = 1;
-    repeated string products = 2;  // list[str]
-    SubData subdata = 3;  // object SubData
+    repeated string products = 2;                   // list[str]
+    SubData subdata = 3;                            // object SubData
 }
 
 message Res {
@@ -17,7 +17,8 @@ message Res {
 }
 
 service MySrv {
-    rpc Send (Req) returns (Res) {} // method
-    rpc SendStream (Req) returns (stream Res) {} // method returns iterator
+    rpc Send (Req) returns (Res) {}                 // method
+    rpc SendStream (Req) returns (stream Res) {}    // method returns iterator
+    rpc GetStream (stream Req) returns (stream Res) {}
 }
 
