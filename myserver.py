@@ -29,7 +29,7 @@ class My(my_pb2_grpc.MySrv):
         for i in ["a", "b", "c"]:
             yield my_pb2.Res(answer=i)
 
-        # return (my_pb2.Res(answer=i) for i in ["a", "b", "c"])
+        # return (my_pb2.Res(answer=i) for i in ["a", "b", "c"])  # OR возврат итератора
 
     def GetStream(self, stream_iterator, context):
         "итератор для получения потока принимает итератор"
@@ -38,8 +38,6 @@ class My(my_pb2_grpc.MySrv):
         for i in stream_iterator:
             print(i.counter)
             yield my_pb2.Res(answer=str(i.counter * 5))
-
-        # return (my_pb2.Res(answer=i) for i in ["d", "e", "f"])
 
 
 def serve():
