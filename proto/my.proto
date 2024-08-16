@@ -25,6 +25,7 @@ service MySrv {
 // Examples:
 
 enum Medal {
+    zero = 0;
     gold = 1;
     silver = 2;
     bronze = 3;
