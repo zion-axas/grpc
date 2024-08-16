@@ -22,3 +22,20 @@ service MySrv {
     rpc GetStream (stream Req) returns (stream Res) {}
 }
 
+// Examples:
+
+enum Medal {
+    gold = 1;
+    silver = 2;
+    bronze = 3;
+}
+
+message MapType {
+    reserved 7,8,9 to 11;
+    map<string, int32> projects = 1;    // <key, value> where key - int or str
+    Medal medal = 2;
+    oneof test_oneof {                // at most one field will be set at the same time
+        string smart = 3;
+        string beauty = 4;
+    }
+}
