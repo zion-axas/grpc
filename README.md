@@ -16,6 +16,5 @@
 
 ### my
 
-`python -m grpc_tools.protoc -I=./proto --python_out=. --pyi_out=. --grpc_python_out=. proto/my.proto`  
---proto_path=IMPORT_PATH  
--I=IMPORT_PATH
+`python3 -m grpc_tools.protoc --python_out=. --grpc_python_out=. --pyi_out=. --proto_path=. ./proto/*.proto`  
+--proto_path=IMPORT_PATH OR -I=IMPORT_PATH
