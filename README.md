@@ -16,5 +16,12 @@
 
 ### my
 
-`python3 -m grpc_tools.protoc --python_out=. --grpc_python_out=. --pyi_out=. --proto_path=. ./proto/*.proto`  
+```
+python3 -m grpc_tools.protoc \
+--python_out=. \  # классы для сообщений
+--grpc_python_out=. \  # классы для сервисов
+--pyi_out=. \  # аннотации типов
+--proto_path=. \  # путь к директории файлов .proto
+./proto/*.proto
+```
 --proto_path=IMPORT_PATH OR -I=IMPORT_PATH

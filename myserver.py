@@ -1,6 +1,6 @@
 from concurrent import futures
 
-from proto import (
+from generated import (
     my_pb2,  # содержит месседжи
     my_pb2_grpc,  # содержит сервисы MySrv, MySrvStub, MySrvServicer
 )

@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from proto import my_pb2 as proto_dot_my__pb2
+import my_pb2 as my__pb2
 
 GRPC_GENERATED_VERSION = '1.65.4'
 GRPC_VERSION = grpc.__version__
@@ -20,7 +20,7 @@ except ImportError:
 if _version_not_supported:
     warnings.warn(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in proto/my_pb2_grpc.py depends on'
+        + f' but the generated code in my_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -41,18 +41,18 @@ class MySrvStub(object):
         """
         self.Send = channel.unary_unary(
                 '/mypackage.MySrv/Send',
-                request_serializer=proto_dot_my__pb2.Req.SerializeToString,
-                response_deserializer=proto_dot_my__pb2.Res.FromString,
+                request_serializer=my__pb2.Req.SerializeToString,
+                response_deserializer=my__pb2.Res.FromString,
                 _registered_method=True)
         self.SendStream = channel.unary_stream(
                 '/mypackage.MySrv/SendStream',
-                request_serializer=proto_dot_my__pb2.Req.SerializeToString,
-                response_deserializer=proto_dot_my__pb2.Res.FromString,
+                request_serializer=my__pb2.Req.SerializeToString,
+                response_deserializer=my__pb2.Res.FromString,
                 _registered_method=True)
         self.GetStream = channel.stream_stream(
                 '/mypackage.MySrv/GetStream',
-                request_serializer=proto_dot_my__pb2.Req.SerializeToString,
-                response_deserializer=proto_dot_my__pb2.Res.FromString,
+                request_serializer=my__pb2.Req.SerializeToString,
+                response_deserializer=my__pb2.Res.FromString,
                 _registered_method=True)
 
 
@@ -82,18 +82,18 @@ def add_MySrvServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Send': grpc.unary_unary_rpc_method_handler(
                     servicer.Send,
-                    request_deserializer=proto_dot_my__pb2.Req.FromString,
-                    response_serializer=proto_dot_my__pb2.Res.SerializeToString,
+                    request_deserializer=my__pb2.Req.FromString,
+                    response_serializer=my__pb2.Res.SerializeToString,
             ),
             'SendStream': grpc.unary_stream_rpc_method_handler(
                     servicer.SendStream,
-                    request_deserializer=proto_dot_my__pb2.Req.FromString,
-                    response_serializer=proto_dot_my__pb2.Res.SerializeToString,
+                    request_deserializer=my__pb2.Req.FromString,
+                    response_serializer=my__pb2.Res.SerializeToString,
             ),
             'GetStream': grpc.stream_stream_rpc_method_handler(
                     servicer.GetStream,
-                    request_deserializer=proto_dot_my__pb2.Req.FromString,
-                    response_serializer=proto_dot_my__pb2.Res.SerializeToString,
+                    request_deserializer=my__pb2.Req.FromString,
+                    response_serializer=my__pb2.Res.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -121,8 +121,8 @@ class MySrv(object):
             request,
             target,
             '/mypackage.MySrv/Send',
-            proto_dot_my__pb2.Req.SerializeToString,
-            proto_dot_my__pb2.Res.FromString,
+            my__pb2.Req.SerializeToString,
+            my__pb2.Res.FromString,
             options,
             channel_credentials,
             insecure,
@@ -148,8 +148,8 @@ class MySrv(object):
             request,
             target,
             '/mypackage.MySrv/SendStream',
-            proto_dot_my__pb2.Req.SerializeToString,
-            proto_dot_my__pb2.Res.FromString,
+            my__pb2.Req.SerializeToString,
+            my__pb2.Res.FromString,
             options,
             channel_credentials,
             insecure,
@@ -175,8 +175,8 @@ class MySrv(object):
             request_iterator,
             target,
             '/mypackage.MySrv/GetStream',
-            proto_dot_my__pb2.Req.SerializeToString,
-            proto_dot_my__pb2.Res.FromString,
+            my__pb2.Req.SerializeToString,
+            my__pb2.Res.FromString,
             options,
             channel_credentials,
             insecure,
